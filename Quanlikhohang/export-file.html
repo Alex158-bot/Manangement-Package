@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sơ Đồ Xuất Hàng</title>
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: url("./bg-image.jpg") no-repeat center center fixed;
+        background-size: cover;
+        color: #0a0e13;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+
+      header {
+        background: rgba(0, 0, 0, 0.85);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+      }
+
+      header h1 {
+        font-size: 36px;
+        margin: 0;
+        text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7);
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 0;
+      }
+
+      nav ul li {
+        display: inline;
+        margin: 0 15px;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        transition: color 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        color: #acf22b;
+      }
+
+      main {
+        max-width: 900px;
+        margin: 20px auto;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        transform: perspective(1000px) rotateX(5deg);
+        transition: transform 0.5s ease;
+      }
+
+      main:hover {
+        transform: perspective(1000px) rotateX(0deg);
+      }
+
+      .image-container img {
+        width: 80%;
+        max-width: 600px;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .image-container img:hover {
+        transform: scale(1.1) rotateY(10deg);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      .modal-content {
+        background: white;
+        margin: 5% auto;
+        padding: 20px;
+        width: 80%;
+        max-width: 700px;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        transform: scale(0.8);
+        transition: transform 0.3s ease-in-out;
+        overflow: auto;
+        max-height: 80vh;
+      }
+
+      .modal.show .modal-content {
+        transform: scale(1);
+      }
+
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      pre {
+        background: #222;
+        color: #b5ce5a;
+        padding: 15px;
+        border-radius: 5px;
+        white-space: pre-wrap;
+        font-size: 14px;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Sơ Đồ Xuất Hàng Từ Kho</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html"> HOME</b></a>
+          </li>
+          <li>
+            <a href="import_data.html">NHẬP HÀNG</a>
+          </li>
+          <li>
+            <a href="export-file.html">XUẤT HÀNG</a>
+          </li>
+          <li>
+            <a href="about-me.html">ĐĂNG NHẬP</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1><b> Sơ Đồ Xuất Hàng</b></h1>
+      <hr />
+      <div class="image-container">
+        <img
+          src="./lutput.jpg"
+          alt="Hình ảnh xuất kho hàng"
+          onclick="showCode()"
+        />
+      </div>
+    </main>
+    <div id="codeModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeCode()">&times;</span>
+        <pre><code>@startuml
+actor NhanVien
+actor DaiLyCungCap
+actor HeThongThanhToan
+actor QuanLyKho
+rectangle "He Thong Xuat Hang" {
+    usecase "Danh sach hang" as UC1
+    usecase "Xuat (button)" as UC2
+    usecase "Danh sach hang duoc xuat" as UC3
+    usecase "OK" as UC4
+    usecase "Chon dai ly cung cap" as UC5
+    usecase "OK" as UC6
+    usecase "Don xuat" as UC7
+}
+NhanVien --> UC1
+NhanVien --> UC2
+NhanVien --> UC3
+NhanVien --> UC4
+NhanVien --> UC5
+NhanVien --> UC6
+NhanVien --> UC7
+@enduml</code></pre>
+      </div>
+    </div>
+    <script>
+      function showCode() {
+        document.getElementById("codeModal").style.display = "block";
+        document.getElementById("codeModal").classList.add("show");
+      }
+
+      function closeCode() {
+        document.getElementById("codeModal").classList.remove("show");
+        setTimeout(() => {
+          document.getElementById("codeModal").style.display = "none";
+        }, 300);
+      }
+    </script>
+  </body>
+</html>

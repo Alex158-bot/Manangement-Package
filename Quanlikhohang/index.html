@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lý Kho Hàng</title>
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: url("./bg-image.jpg") no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+
+      header {
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 20px;
+        position: relative;
+      }
+
+      header h1 {
+        font-size: 48px;
+        margin: 0;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+        letter-spacing: 3px;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      header h1:hover {
+        transform: scale(1.1);
+        text-shadow: 6px 6px 15px rgba(255, 255, 255, 0.5);
+      }
+
+      .logo {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 80px;
+        height: 80px;
+        background: url("../sodo/Logo.png") no-repeat center center;
+        background-size: cover;
+        transform: rotateY(0deg);
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .logo:hover {
+        transform: rotateY(360deg) scale(1.1);
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 0;
+      }
+
+      nav ul li {
+        display: inline;
+        margin: 0 15px;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 10px 20px;
+        border: 2px solid white;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+      }
+
+      nav ul li a:hover {
+        color: #acf22b;
+        border-color: #acf22b;
+        box-shadow: 0 0 10px rgba(172, 242, 43, 0.8);
+      }
+
+      main {
+        max-width: 1000px;
+        margin: 20px auto;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .section:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(255, 255, 255, 0.5);
+      }
+
+      .section h2 {
+        color: #acf22b;
+        text-shadow: 2px 2px 5px rgba(172, 242, 43, 0.8);
+      }
+
+      .section p {
+        color: white;
+      }
+
+      .marquee {
+        position: fixed;
+        bottom: 10px;
+        width: 100%;
+        font-size: 24px;
+        font-weight: bold;
+        color: #acf22b;
+        text-shadow: 2px 2px 10px rgba(172, 242, 43, 0.8);
+        overflow: hidden;
+        white-space: nowrap;
+        animation: marquee 10s linear infinite;
+      }
+
+      @keyframes marquee {
+        from {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(-100%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo"></div>
+      <h1>Quản Lý Kho Hàng</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html"><b>HOME</b></a>
+          </li>
+          <li>
+            <a href="import_data.html"><b>NHẬP HÀNG</b></a>
+          </li>
+          <li>
+            <a href="export-file.html"><b>XUẤT HÀNG</b></a>
+          </li>
+          <li>
+            <a href="about-me.html"><b>ĐĂNG NHẬP</b></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="section">
+        <h2>Quản Lý Nhập Hàng</h2>
+        <p>Theo dõi và kiểm soát số lượng hàng hóa nhập vào kho.</p>
+      </section>
+
+      <section class="section">
+        <h2>Quản Lý Xuất Hàng</h2>
+        <p>Ghi nhận và kiểm soát số lượng hàng hóa xuất khỏi kho.</p>
+      </section>
+
+      <section class="section">
+        <h2>Tổng Kết Hàng Tồn</h2>
+        <p>Tính toán tổng số lượng hàng tồn trong kho.</p>
+      </section>
+    </main>
+    <div class="marquee">Nhóm 1 - Hệ Thống quản Lý Kho Hàng</div>
+  </body>
+</html>
