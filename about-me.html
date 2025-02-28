@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('./bg-image.jpg') no-repeat center center/cover;
+        }
+        .login-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .google-btn {
+            background-color: #db4437;
+            margin-top: 10px;
+        }
+        .google-btn:hover {
+            background-color: #c1351d;
+        }
+        #loginImage {
+            display: none;
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        /* Popup chứa code */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: black;
+            color: limegreen;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+            width: 80%;
+            max-width: 600px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            text-align: left;
+        }
+        .popup-close {
+            color: red;
+            float: right;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Đăng nhập</h2>
+        <form onsubmit="showImage(event)">
+            <input type="text" name="username" placeholder="Tên đăng nhập" required>
+            <input type="password" name="password" placeholder="Mật khẩu" required>
+            <button type="submit">Đăng nhập</button>
+        </form>
+        <button class="google-btn" onclick="showImage(event)">Đăng nhập bằng Google</button>
+    </div>
+
+    <!-- Ảnh hiển thị sau khi nhấn đăng nhập -->
+    <img id="loginImage" src="./sodo.png" alt="Login Image" onclick="showPopup()">
+
+    <!-- Popup hiển thị code -->
+    <div id="codePopup" class="popup">
+        <span class="popup-close" onclick="closePopup()">✖</span>
+        <code>
+@startuml
+actor "Người dùng" as User
+actor "Quản lý" as Manager
+
+rectangle "Hệ thống đăng nhập" {
+  usecase "Đăng nhập bằng\nTên người dùng & Mật khẩu" as UC1
+  usecase "Đăng nhập bằng\nGoogle" as UC2
+}
+
+User --> UC1
+User --> UC2
+@enduml
+        </code>
+    </div>
+
+    <script>
+        function showImage(event) {
+            event.preventDefault(); // Ngăn chặn form gửi đi
+            document.getElementById("loginImage").style.display = "block"; // Hiển thị ảnh
+        }
+
+        function showPopup() {
+            document.getElementById("codePopup").style.display = "block"; // Hiển thị popup
+        }
+
+        function closePopup() {
+            document.getElementById("codePopup").style.display = "none"; // Ẩn popup
+        }
+    </script>
+</body>
+</html>

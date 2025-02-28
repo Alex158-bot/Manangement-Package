@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Management Package</title>
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: url('./bg-image.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: #0a0e13;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+
+      header {
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 36px;
+        margin: 0;
+        color: white;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0 0;
+      }
+
+      nav ul li {
+        display: inline;
+        margin: 0 15px;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        transition: color 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        color: #acf22b;
+      }
+
+      main {
+        max-width: 900px;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      h1 {
+        color: #16161d;
+        font-size: 32px;
+        text-align: center;
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 1.6;
+      }
+
+      hr {
+        border: 1px solid #e97777;
+        margin: 20px 0;
+      }
+
+      .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+      }
+
+      .image-container img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .image-container img:hover {
+        transform: scale(1.1);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-content {
+        background: white;
+        margin: 10% auto;
+        padding: 20px;
+        width: 60%;
+        border-radius: 10px;
+        position: relative;
+      }
+
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      pre {
+        background: black;
+        color: #0eed6083;
+        padding: 10px;
+        border-radius: 5px;
+        white-space: pre-wrap;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>SƠ ĐỒ NHẬP HÀNG TỪ KHO</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html"><b>HOME</b></a></li>
+                <li><a href="import_data.html"><b>NHẬP HÀNG</b></a></li>
+                <li><a href="export-file.html"><b>XUẤT HÀNG</b></a></li>
+                <li><a href="about-me.html"><b>ĐĂNG NHẬP</b></a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1><b> SƠ ĐỒ NHẬP HÀNG</b></h1>
+      <hr />
+      <div class="image-container">
+        <img src="/input.jpg" alt="Hình ảnh nhập kho hàng" onclick="showCode()" />
+      </div>
+    </main>
+    
+    <div id="codeModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeCode()">&times;</span>
+        <pre>
+@startuml
+actor NhanVien
+actor NhaCungCap
+actor HeThongThanhToan
+actor QuanLyKho
+
+rectangle "He Thong Nhap Hang" {
+    usecase "Nhap hang" as UC1
+    usecase "Danh sach san pham" as UC2
+    usecase "Them san pham" as UC3
+    usecase "Danh sach them" as UC4
+    usecase "OK" as UC5
+    usecase "Chon nha cung cap" as UC6
+    usecase "Don nhap" as UC7
+}
+
+NhanVien --> UC1
+NhanVien --> UC2
+NhanVien --> UC3
+NhanVien --> UC4
+NhanVien --> UC5
+NhanVien --> UC6
+NhanVien --> UC7
+
+UC1 <.. UC2 : <<include>>
+UC3 <.. UC4 : <<include>>
+UC5 <.. UC6 : <<include>>
+UC6 <.. UC7 : <<include>>
+
+UC7 --> NhaCungCap
+UC7 --> HeThongThanhToan
+UC7 --> QuanLyKho
+@enduml
+        </pre>
+      </div>
+    </div>
+
+    <script>
+      function showCode() {
+        document.getElementById("codeModal").style.display = "block";
+      }
+
+      function closeCode() {
+        document.getElementById("codeModal").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
